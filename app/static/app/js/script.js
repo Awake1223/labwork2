@@ -68,33 +68,30 @@ function loadSettings() {
 
 
 const loginInput = document.getElementById('myLogin');
-const passwordInput = document.getElementById('myPassword');
-const loginButton = document.getElementById('myButton');
+        const passwordInput = document.getElementById('myPassword');
+        const loginButton = document.getElementById('myButton');
+        const statusText = document.getElementById('status');
 
-        // Добавляем обработчик события 'click' на кнопку
 loginButton.addEventListener('click', function() {
-            // Считываем значения из полей ввода
-    const login = loginInput.value;
-    const password = passwordInput.value;
+            const login = loginInput.value.trim();
+            const password = passwordInput.value.trim();
 
-            // Выводим данные в консоль (или можете использовать их по своему усмотрению)
-    console.log('Логин:', login);
-    console.log('Пароль:', password);
+            // Регулярное выражение для проверки недопустимых символов
+            const invalidChars = /[^a-zA-Z0-9]/;
 
-            // Здесь можно добавить дополнительные действия:
-            // например, проверку логина и пароля, отправку данных на сервер и т.д.
-    const regex = /^[a-zA-Z0-9_]+$/;
-    if (regex.test(login)) {
-        console.log("Login соответствует требованиям.");
-    } else {
-        alert("Так нельзя")
-        console.log("Login не соответствует требованиям.");
-    }
+            if (invalidChars.test(login) || invalidChars.test(password)) {
+                alert('Логин и пароль могут содержать только латинские буквы и цифры.');
+                return;
+            } else {
+                document.cookie = `login=${login}; path=/; max-age=60`; // Куки на 1 минуту
+                statusText.textContent = "Активирован"; // Обновляем статус
+            }
 
-    if (regex.test(password)) {
-        console.log("Все норм!");
-    } else {
-        alert ("Так нельзя!");
-    }
-}
+
 });
+
+    const cookie = document.cookie.match(/login=([^;]*)/);
+    if (cookie) {
+        const login = cookie[1];
+        statusText.textContent = "Активирован"; // Обновляем статус
+    }
