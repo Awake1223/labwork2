@@ -1,0 +1,27 @@
+.Header {
+    background-color: cyan;
+    font-family: "Sofia Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    color: black
+    margin-bottom: 5%
+
+}
+
+
+.Main {
+    font-family: "Sofia Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    color: black
+}
+
+
+.sofia-sans-<uniquifier> {
+  font-family: "Sofia Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
