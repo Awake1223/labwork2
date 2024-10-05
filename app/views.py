@@ -9,7 +9,9 @@ def index(request):
     return render(request, 'app/index.html')
 
 def login(request):
-    return  render(request, 'app/login.html')
+    login = request.COOKIES.get('login', '')
+    password = request.COOKIES.get('password', '')
+    return  render(request, 'app/login.html' , {'login': login, 'password': password})
 
 def payment(request):
    return  render(request, 'app/payment.html')
@@ -34,4 +36,4 @@ def get_cookie(request):
     user_value = request.COOKIES.get('user_value', 'Кука не установлена.')
 
     # Отображаем значения куки на сайте
-    return render(request, 'login.html', {'login': login, 'password': password})
+    return render(request, 'login.html', {'login': login, 'password': password, 'user_value': user_value})

@@ -8,4 +8,5 @@ urlpatterns = [
     path ('payment', views.payment, name='payment'),
     path('set_cookie/', set_cookie, name='set_cookie'),
     path('get_cookie/', get_cookie, name='get_cookie'),
+
 ]
